@@ -7,7 +7,7 @@ Ini adalah **Starter Pack** (Kerangka Awal) untuk Project Akhir kalian. Reposito
 
 Berikut adalah kondisi awal file yang kalian terima:
 
-### 1. `/app` (Backend Application)
+### 1. `/app` (Backend Application) (Done)
 - **Status:** Sudah di-init (`npm init`), tapi belum ada logic apapun.
 - **Isi:** Folder `routes`, `views`, dan `views/partials` sudah disiapkan.
 - **Tugas Kalian:**
