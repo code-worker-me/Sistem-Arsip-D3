@@ -3,9 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Tekser</title>
+    <title><%= title %></title>
   </head>
   <body>
-    <h1>Hello World! Silakan edit file ini.</h1>
+    <h1>Daftar Arsip</h1>
+
+    <% if (archives.length === 0) { %>
+    <p>Belum ada arsip.</p>
+    <% } %>
+
+    <ul>
+      <% archives.forEach(archive => { %>
+      <li>
+        <strong><%= archive.title %></strong><br />
+        <small>
+          Oleh: <%= archive.username ?? 'Unknown' %> | <%= new
+          Date(archive.created_at).toLocaleDateString() %> </small
+        ><br />
+        <p><%= archive.description %></p>
+        <a href="/uploads/<%= archive.file_path %>" target="_blank">
+          Lihat File
+        </a>
+      </li>
+      <hr />
+      <% }) %>
+    </ul>
   </body>
 </html>
