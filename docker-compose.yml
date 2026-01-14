@@ -22,7 +22,7 @@ services:
       - app_networks
 
   # --- 2. APP SERVICE ---
-  sistem_arsip:
+  sistem-arsip:
     build: ./app
     container_name: sistem_arsip_${GROUP_NAME}
     restart: always
@@ -36,10 +36,6 @@ services:
       - APP_PORT=3000
     depends_on:
       - db_service
-    volumes:
-      - ./app:/usr/src/app
-      - /usr/src/app/node_modules
-    command: npx nodemon app.js
     # Network
     networks:
       - app_networks
@@ -51,19 +47,23 @@ services:
     restart: always
     ports:
       - "${APP_PORT}:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - sistem_arsip
+      - sistem-arsip
     # Network
     networks:
       - app_networks
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    
 
 #--- VOLUMES AND NETWORKS ---
 # tambahkan bagian volumes dan networks di sini
 volumes:
   db_data:
+    name: mysql_data_${GROUP_NAME}
+    driver: local
 
 networks:
   app_networks:
     driver: bridge
+    name: net_tekser_${GROUP_NAME}
