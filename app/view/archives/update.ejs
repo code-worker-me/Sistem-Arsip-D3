@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Edit Arsip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-5">
+    <div class="container bg-white p-4 rounded shadow-sm" style="max-width: 600px;">
+        <h3 class="mb-4">✏️ Edit Arsip</h3>
+        <form action="/archive/update/<%= archive.id %>" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Judul Arsip</label>
+                <input type="text" name="title" class="form-control" value="<%= archive.title %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Deskripsi</label>
+                <textarea name="description" class="form-control" rows="3"><%= archive.description %></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nama/Path File</label>
+                <input type="text" name="file_path" class="form-control" value="<%= archive.file_path %>" required>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+                <a href="/archive" class="btn btn-light">Batal</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
